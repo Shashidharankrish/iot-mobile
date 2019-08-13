@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" autocomplete="off">    
+    <ion-item>
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input formControlName="firstName" name="firstName" type="text" required> 
+        </ion-input>
+    </ion-item>
+    <ion-label *ngIf="submitted && f.firstName.errors && f.firstName.errors.required">First Name is required field.</ion-label >
+    <ion-label *ngIf="submitted && f.firstName.errors && f.firstName.errors.minlength">Minimym 3 character is required.</ion-label >  
+    <ion-item>
+        <ion-label position="floating">Last Name</ion-label>
+        <ion-input formControlName="lastName" name="lastName" type="text" required> 
+        </ion-input>
+    </ion-item>
+    <ion-label *ngIf="submitted && f.lastName.errors && f.lastName.errors.required">Last Name is required field.</ion-label >
+    <ion-label *ngIf="submitted && f.lastName.errors && f.lastName.errors.minlength">Minimym 3 character is required.</ion-label >  
+    <ion-item>
+        <ion-label position="floating">Email </ion-label>
+            <ion-input formControlName="email" name="email" type="text" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"> 
+        </ion-input>   
+    </ion-item>
+    <ion-label *ngIf="submitted && f.email.errors && f.email.errors.required">Email is required field.</ion-label >
+    <ion-label *ngIf="submitted && f.email.errors && f.email.errors.pattern">Email must be a valid email address</ion-label >
+      <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input formControlName="password" name="password" type="password" required> 
+          </ion-input>
+      </ion-item>
+      <ion-label *ngIf="submitted && f.password.errors && f.password.errors.required">Password is required field.</ion-label >
+      <ion-label *ngIf="submitted && f.password.errors && f.password.errors.minlength">Minimym 5 character is required.</ion-label >  
+      <ion-item>
+          <ion-label position="floating">Confirm Password</ion-label>
+          <ion-input formControlName="confirmpassword" name="confirmpassword" type="password" required> 
+          </ion-input>
+      </ion-item>
+      <ion-label *ngIf="submitted && f.confirmpassword.errors && f.confirmpassword.errors.required">Confirm Password is required field.</ion-label >
+      <ion-label *ngIf="submitted && f.confirmpassword.errors && f.confirmpassword.errors.mustMatch">Password should match.</ion-label >  
+      <ion-row class="signin">
+        <ion-col>
+            <ion-button type="submit"  color="primary" shape="full" expand="block">Save</ion-button>
+        </ion-col>
+    </ion-row>
+  </form>    
+</ion-content>

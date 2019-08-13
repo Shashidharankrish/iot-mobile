@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Device Type</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" novalidate autocomplete="off">
+    <ion-list>
+        <ion-row>
+          <ion-col>
+            <ion-label position="floating">Device Type</ion-label>
+            <ion-input type="text" name="devicetype" #devicetypea="ngModel"  [(ngModel)]="deviceModel.deviceType" required> 
+            </ion-input>
+            <span *ngIf="f.submitted && devicetypea.invalid && (devicetypea.dirty || devicetypea.touched)">
+              Device Type is required.
+            </span>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let parameter of parameters">
+          <ion-col>{{parameter.Name}}</ion-col>
+          <ion-col><ion-label position="fixed">Low: </ion-label><ion-input  name="low-{{parameter.key+'low'}}" type="text" [(ngModel)]="range[parameter.key]['low']" > </ion-input></ion-col>
+          <ion-col><ion-label position="fixed">High: </ion-label><ion-input  name="high-{{parameter.key+'high'}}" type="text" [(ngModel)]="range[parameter.key]['high']" > </ion-input></ion-col>
+        </ion-row>
+    </ion-list>
+    <ion-row class="signin">
+        <ion-col>
+            <ion-button type="submit"  color="primary" shape="full" expand="block">Save</ion-button>
+        </ion-col>
+    </ion-row>
+  </form>    
+</ion-content>

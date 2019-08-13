@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>assigndevice</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  
+  <form [formGroup]="assigndeviceForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <ion-list>
+      <ion-item>
+        <ion-label>Select User</ion-label>
+        <ion-select placeholder="Select One" formControlName="users" name="users">
+          <ion-select-option *ngFor="let user of users" [value]="user._id" >{{user.first_name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Select Device Type</ion-label>
+        <ion-select placeholder="Select One" formControlName="deviceName" name="deviceName">
+          <ion-select-option *ngFor="let devicetype of devicetypes" [value]='devicetype.deviceType+"-"+devicetype._id' >{{devicetype.deviceType}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+    <ion-row class="signin">
+        <ion-col>
+            <ion-button type="submit" [disabled]="assigndeviceForm.invalid" color="primary" shape="full" expand="block">Save</ion-button>
+        </ion-col>
+    </ion-row>
+  </form>    
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Device</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content padding>
+  <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <ion-list>
+        <ion-item>
+            <ion-label position="stacked">Device Name</ion-label>
+            <ion-input formControlName="deviceName" name="deviceName" type="text" required> 
+            </ion-input>
+        </ion-item>
+    </ion-list>
+    <ion-row class="signin">
+        <ion-col>
+            <ion-button type="submit" [disabled]="deviceForm.invalid" color="primary" shape="full" expand="block">Save</ion-button>
+        </ion-col>
+    </ion-row>
+  </form>    
+</ion-content>

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>All Devices</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button (click)="addDevice()" stolts="end"	><ion-icon name="add"></ion-icon></button>
+      <ion-item (click)="moveDetails(device)" *ngFor="let device of devices" detail>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label>{{device.deviceName}}</ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+   
+</ion-content>
